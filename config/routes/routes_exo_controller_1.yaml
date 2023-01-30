@@ -1,0 +1,28 @@
+#
+# Exercice - Controller et redirections
+#
+
+test1_index:
+  methods: GET
+  path: /test1/index
+  controller: App\Controller\ExoControllers1\Test1Controller::index
+
+test1_store:
+  methods: POST
+  path: /test1/store/{id}
+  controller: App\Controller\ExoControllers1\Test1Controller::store
+
+test2_index:
+  methods: GET
+  path: /test2/index
+  controller: App\Controller\ExoControllers1\Test2Controller::index
+
+test2_redirectTest1Index:
+  methods: GET
+  path: /test2/redirect-test1
+  controller: App\Controller\ExoControllers1\Test2Controller::redirectTest1Index
+
+test2_redirectSymfony:
+  methods: GET
+  path: /test2/redirect-symfony
+  controller: App\Controller\ExoControllers1\Test2Controller::redirectSymfony
