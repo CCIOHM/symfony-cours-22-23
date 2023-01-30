@@ -1,5 +1,5 @@
 <?php
-namespace App\ExoRoutes\Controller;
+namespace App\Controller\ExoRoutes;
 
 use Symfony\Component\HttpFoundation\Response;
 
