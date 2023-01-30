@@ -1,0 +1,5 @@
+# Routes pour les pages d'erreurs par défaut (404, ...)
+when@dev:
+    _errors:
+        resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
+        prefix: /_error

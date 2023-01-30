@@ -1,0 +1,11 @@
+# Pour que les routes d'annotations fonctionne !
+
+# Depuis les controllers
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+
+# Depuis le kernel
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
