@@ -1,0 +1,8 @@
+#
+# Exercice - Controller API
+#
+
+items_show:
+  methods: GET
+  path: /items/show
+  controller: App\Controller\ExoControllers2\ItemsController::show
