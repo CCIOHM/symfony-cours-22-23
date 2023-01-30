@@ -1,0 +1,43 @@
+#
+# Exercice - Routes
+#
+
+welcome:
+  methods: GET
+  path: /
+  controller: App\Controller\ExoRoutes\WelcomeController::index
+
+welcomeRedirect:
+  methods: GET
+  path: /gshort
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+  defaults:
+    path: https://www.google.com
+    permanent: true
+
+welcomeList:
+  methods: GET
+  path: /list
+  controller: App\Controller\ExoRoutes\WelcomeController::list
+
+welcomeShow:
+  methods: GET
+  path: /show/{id?}
+  controller: App\Controller\ExoRoutes\WelcomeController::show
+
+welcomeStore:
+  methods: POST
+  path: /store
+  controller: App\Controller\ExoRoutes\WelcomeController::store
+
+welcomeUpdate:
+  methods: PUT
+  path: /update/{id}
+  controller: App\Controller\ExoRoutes\WelcomeController::update
+
+welcomeDelete:
+  methods: DELETE
+  path: /delete/{id}
+  controller: App\Controller\ExoRoutes\WelcomeController::delete
+  requirements:
+    id: '[a-zA-Z]+'
