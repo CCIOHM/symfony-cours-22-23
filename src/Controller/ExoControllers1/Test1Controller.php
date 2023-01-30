@@ -1,5 +1,5 @@
 <?php
-namespace App\ExoControllers1\Controller;
+namespace App\Controller\ExoControllers1;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
