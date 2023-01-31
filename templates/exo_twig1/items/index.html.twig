@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items Index !</title>
+</head>
+<body>
+    {# Example 1: "display" venant du controller #}
+    {# {% if display %}  #}
+
+    {# Example 2: "display" venant directement de "request" de twig #}
+    {% if app.request.get('display') %}
+
+        {# Affichage manuel des valeurs du tableau par les clés #}
+        <ul>
+            <li>{{ items.key1 }}</li>
+            <li>{{ items.key2 }}</li>
+            <li>{{ items.key3 }}</li>
+        </ul>
+
+        <br>
+
+        {# Affichage avec un foreach des valeurs du tableau #}
+        <ul>
+            {% for value in items %}
+                <li>{{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {# 
+        Dernière partie de l'exercice: 
+        Injection direct d'un tableau PHP encodé (dans le contrôlleur) en JSON
+        Et afficher avec un console.log()
+        Résultat: Un object JS !
+    #}
+    <script>
+        const Object_JS_From_JSON_From_PHP = {{ tableJson|raw }};
+        console.log(Object_JS_From_JSON_From_PHP);
+    </script>
+</body>
+</html>

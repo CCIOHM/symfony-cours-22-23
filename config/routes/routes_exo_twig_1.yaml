@@ -1,0 +1,8 @@
+#
+# Exercice - Twig 1
+#
+
+twig_items_index:
+  methods: GET
+  path: /twig/items/index
+  controller: App\Controller\ExoTwig1\ItemsController::index
