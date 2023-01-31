@@ -1,0 +1,21 @@
+#
+# Exercice - Controller, Request & Response
+#
+
+students_index:
+  methods: GET
+  path: /students/index
+  controller: App\Controller\ExoControllers3\StudentsController::index
+
+students_edit:
+  methods: GET
+  path: /students/edit/{id}
+  controller: App\Controller\ExoControllers3\StudentsController::edit
+
+students_update:
+  methods: POST
+  path: /students/update/{id}
+  controller: App\Controller\ExoControllers3\StudentsController::update
+
+
+
