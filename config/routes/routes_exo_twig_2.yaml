@@ -1,0 +1,8 @@
+#
+# Exercice - Twig 2
+#
+
+twig_pictures_index:
+  methods: GET
+  path: /twig/pictures/index
+  controller: App\Controller\ExoTwig2\PicturesController::index
