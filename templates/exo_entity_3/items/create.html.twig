@@ -1,0 +1,25 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}Items Create{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{{ path('entity_items_store') }}">
+        <label for="label">Label</label><br>
+        <input type="text" name="label" id="label">
+
+        <br>
+        <label for="price">Price</label><br>
+        <input type="number" name="price" id="price">
+
+        <br>
+        <label for="quantity">Quantity</label><br>
+        <input type="number" name="quantity" id="quantity">
+
+        <br>
+        <label for="location">Location</label><br>
+        <input type="text" name="location" id="location">
+        
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

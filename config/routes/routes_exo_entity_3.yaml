@@ -1,0 +1,13 @@
+#
+# Exercice - Entity 3
+#
+
+entity_items_create:
+  methods: GET
+  path: /entity3/items/create
+  controller: App\Controller\ExoEntity3\ItemsController::create
+
+entity_items_store:
+  methods: POST
+  path: /entity3/items/store
+  controller: App\Controller\ExoEntity3\ItemsController::store
