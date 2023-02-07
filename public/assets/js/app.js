@@ -1,1 +1,1 @@
-alert('Js loaded');
+ console.log('Js loaded');
