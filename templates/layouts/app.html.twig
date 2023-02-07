@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>{% block title %}Symfony Cours{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ asset('/assets/css/app.css') }}">
+    {% block style %}{% endblock %}
+
+    {% block script_head %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ path('twig_welcome_index') }}">Welcome</a></li>
+            <li><a href="{{ path('twig_pictures_index') }}">Pictures</a></li>
+            <li><a href="{{ path('twig_contact_index') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            {% set errorFlashes = app.flashes('error') %}
+            {% if errorFlashes %}
+                <ul class="errors">
+                    {% for error in errorFlashes %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% set successFlashes = app.flashes('success') %}
+            {% if successFlashes %}
+                <ul class="success">
+                    {% for success in successFlashes %}
+                        <li>{{ success }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+
+        <br>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="{{ path('twig_contact_index') }}">Contact</a></li>
+        </ul>
+    </footer>
+
+    <script src="{{ asset('/assets/js/app.js') }}"></script>
+    {% block script_body %}{% endblock %}
+</body>
+</html>

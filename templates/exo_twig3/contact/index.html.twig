@@ -1,0 +1,21 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}Conntact Index{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="name">Name</label><br>
+        <input type="text" name="email" id="name">
+
+        <br>
+        <label for="content">Message</label><br>
+        <textarea name="content" id="content"></textarea>
+
+        <br>
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label for="checkbox">Legal ...</label>
+        
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

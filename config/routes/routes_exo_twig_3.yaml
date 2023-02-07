@@ -1,0 +1,23 @@
+#
+# Exercice - Twig 3
+#
+
+twig_welcome_index:
+  methods: GET
+  path: /twig3/welcome
+  controller: App\Controller\ExoTwig3\WelcomeController::index
+
+twig_pictures_index:
+  methods: GET
+  path: /twig3/pictures
+  controller: App\Controller\ExoTwig3\PicturesController::index
+
+twig_contact_index:
+  methods: GET
+  path: /twig3/contact
+  controller: App\Controller\ExoTwig3\ContactController::index
+
+twig_contact_form_process:
+  methods: POST
+  path: /twig3/contact
+  controller: App\Controller\ExoTwig3\ContactController::formProcess
