@@ -1,0 +1,13 @@
+#
+# Exercice - Entity 2
+#
+
+entity_contact_index:
+  methods: GET
+  path: /entity2/contact/index
+  controller: App\Controller\ExoEntity2\ContactFormsController::index
+
+entity_contact_process:
+  methods: POST
+  path: /entity2/contact/process
+  controller: App\Controller\ExoEntity2\ContactFormsController::formProcess

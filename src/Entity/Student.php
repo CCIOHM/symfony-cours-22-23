@@ -17,6 +17,9 @@ class Student
     #[ORM\Column(length: 120)]
     private ?string $email;
 
+    #[ORM\Column(length: 60, nullable: false)]
+    private ?string $password;
+
     #[ORM\Column(length: 40)]
     private ?string $first_name;
 
@@ -25,6 +28,9 @@ class Student
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address;
+
+    #[ORM\Column(length: 60, nullable: true, unique: true)]
+    private ?string $token;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $created_at = null;
@@ -42,6 +48,18 @@ class Student
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
@@ -78,6 +96,18 @@ class Student
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
