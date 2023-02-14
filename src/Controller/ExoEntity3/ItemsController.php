@@ -106,5 +106,19 @@ class ItemsController extends AbstractController
     public function delete(ManagerRegistry $doctrine, $id): Response
     {
         // Action destruction d'un item
+        $manager = $doctrine->getManager();    
+        
+        $repository = $doctrine->getRepository(Item::class);
+        $item = $repository->find($id);
+
+        if(empty($item)) {
+            throw $this->createNotFoundException();
+        }
+
+        $manager->remove($item);
+        $manager->flush();
+
+        $this->addFlash('success', 'Item deleted !');
+        return $this->redirectToRoute('entity_items_index');
     }
 }

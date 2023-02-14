@@ -26,6 +26,8 @@
                         <a href="{{ path('entity_items_show', {id: item.id}) }}">Show</a>
                         <br>
                         <a href="{{ path('entity_items_edit', {id: item.id}) }}">Edit</a>
+                        <br>
+                        <a href="{{ path('entity_items_delete', {id: item.id}) }}">Direct delete</a>
                     </td>
                 </tr>
             {% endfor %}

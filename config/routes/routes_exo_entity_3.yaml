@@ -33,3 +33,9 @@ entity_items_update:
   methods: POST
   path: /entity3/items/update/{id}
   controller: App\Controller\ExoEntity3\ItemsController::update
+
+# Exercice - Entity 3 - Part 4
+entity_items_delete:
+    methods: GET
+    path: /entity3/items/delete/{id}
+    controller: App\Controller\ExoEntity3\ItemsController::delete
