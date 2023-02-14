@@ -9,9 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ItemsController extends AbstractController
 {
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
         // Affichage liste des items
+        $repository = $doctrine->getRepository(Item::class);
+        $items = $repository->findAll();
+
+        return $this->render('exo_entity_3/items/index.html.twig', [
+            'items' => $items,
+        ]);
     }
 
     public function create(): Response
@@ -40,19 +46,42 @@ class ItemsController extends AbstractController
         return $this->redirectToRoute('entity_items_create');
     }
 
-    public function show($id): Response
+    public function show(ManagerRegistry $doctrine, $id): Response
     {
         // Affichage d'un seul item
+        $repository = $doctrine->getRepository(Item::class);
+        $item = $repository->find($id);
+
+        if(empty($item)) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('exo_entity_3/items/show-edit.html.twig', [
+            'item' => $item,
+            'edit' => false,
+        ]);
     }
 
-    public function edit($id): Response
+    public function edit(ManagerRegistry $doctrine, $id): Response
     {
         // Affichage vue formulaire de mise à jour item
+        $repository = $doctrine->getRepository(Item::class);
+        $item = $repository->find($id);
+
+        if(empty($item)) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('exo_entity_3/items/show-edit.html.twig', [
+            'item' => $item,
+            'edit' => true,
+        ]);
     }
 
     public function update(Request $request, $id): Response
     {
         // Action formulaire de mise à jour item
+        
     }
 
     public function delete($id): Response

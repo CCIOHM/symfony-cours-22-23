@@ -1,0 +1,34 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}Items List{% endblock %}
+
+{% block content %}
+    <section>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Location</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.label}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.location}}</td>
+                    <td>{{item.createdAt|date('d-m-Y')}}</td>
+                    <td>
+                        <a href="{{ path('entity_items_show', {id: item.id}) }}">Show</a>
+                        <br>
+                        <a href="{{ path('entity_items_edit', {id: item.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}

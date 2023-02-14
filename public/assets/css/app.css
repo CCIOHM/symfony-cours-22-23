@@ -1,3 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: aquamarine;
+    background-color: rgb(238, 249, 245);
+}
+
+nav {
+    margin: 1rem;
+    padding: 5px 10px;
+    border: 2px solid rgb(247, 181, 74);
+}
+
+main {
+    margin: .9rem .5rem;
+    padding: .5rem 5rem;
+    border: 2px solid rgb(74, 169, 247);
+}
+
+footer {
+    margin: 1rem;
+    padding: 20px;
+    border: 2px solid rgb(247, 74, 114);
+}
+
+nav ul, footer ul {
+    list-style: none;
+}
+nav ul li, footer ul li {
+    display: inline-block;
+    margin: 0 .6rem;
+}
+nav ul li a, footer ul li a {
+    text-decoration: none;
+    padding: .6rem .8rem;
+    border-radius: 3%;
+    background-color: rgb(95, 130, 194);
+    color: whitesmoke;
+}
+
+a, a:focus, a:active {
+    font-weight: bold;
+    color: black;
 }

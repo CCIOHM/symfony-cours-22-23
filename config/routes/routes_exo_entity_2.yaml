@@ -4,10 +4,10 @@
 
 entity_contact_index:
   methods: GET
-  path: /entity2/contact/index
+  path: /exoentity/contact/index
   controller: App\Controller\ExoEntity2\ContactFormsController::index
 
 entity_contact_process:
   methods: POST
-  path: /entity2/contact/process
+  path: /exoentity/contact/process
   controller: App\Controller\ExoEntity2\ContactFormsController::formProcess
