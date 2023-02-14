@@ -78,13 +78,32 @@ class ItemsController extends AbstractController
         ]);
     }
 
-    public function update(Request $request, $id): Response
+    public function update(Request $request, ManagerRegistry $doctrine, $id): Response
     {
         // Action formulaire de mise à jour item
+        $manager = $doctrine->getManager();    
         
+        $repository = $doctrine->getRepository(Item::class);
+        $item = $repository->find($id);
+
+        if(empty($item)) {
+            throw $this->createNotFoundException();
+        }
+
+        $item->setLabel($request->request->get('label'));
+        $item->setPrice($request->request->get('price'));
+        $item->setQuantity($request->request->get('quantity'));
+        $item->setLocation($request->request->get('location'));
+
+        $manager->flush();
+
+        $this->addFlash('success', 'Item updated !');
+        return $this->redirectToRoute('entity_items_show', [
+            'id' => $item->getId(),
+        ]);
     }
 
-    public function delete($id): Response
+    public function delete(ManagerRegistry $doctrine, $id): Response
     {
         // Action destruction d'un item
     }

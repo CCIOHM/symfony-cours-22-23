@@ -28,7 +28,7 @@ entity_items_edit:
   path: /entity3/items/edit/{id}
   controller: App\Controller\ExoEntity3\ItemsController::edit
 
-# Exercice - Entity 3 - Part 2
+# Exercice - Entity 3 - Part 2+3
 entity_items_update:
   methods: POST
   path: /entity3/items/update/{id}
