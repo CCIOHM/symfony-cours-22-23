@@ -21,7 +21,7 @@
                     <td>{{item.price}}</td>
                     <td>{{item.quantity}}</td>
                     <td>{{item.location}}</td>
-                    <td>{{item.createdAt|date('d-m-Y')}}</td>
+                    <td class="inner-date" data-value="{{ item.createdAt|date('U') }}"></td>
                     <td>
                         <a href="{{ path('entity_items_show', {id: item.id}) }}">Show</a>
                         <br>
@@ -33,4 +33,22 @@
             {% endfor %}
         </table>
     </section>
+
+    <script>
+        function translateDate(selector) {
+            const inputDate = document
+                .querySelectorAll(selector)
+                .forEach(el => {
+                    el.innerHTML = '';
+
+                    const unixTimestramps = parseInt(el.getAttribute('data-value')) * 1000;
+                    if (unixTimestramps) {
+                        const date = new Date(unixTimestramps);
+                        el.innerHTML = date.toLocaleDateString();
+                    }
+                });
+        }
+
+        translateDate('.inner-date');
+    </script>
 {% endblock %}
