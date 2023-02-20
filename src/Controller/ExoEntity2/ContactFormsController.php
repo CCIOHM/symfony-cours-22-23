@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Entity2;
+namespace App\Controller\ExoEntity2;
 
 use App\Entity\ContactForm;
 use Doctrine\Persistence\ManagerRegistry;
