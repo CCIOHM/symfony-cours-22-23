@@ -1,0 +1,5 @@
+# Exercice - Entity 4 - Part 1
+entity_items_test:
+  methods: GET
+  path: /entity4/items/test
+  controller: App\Controller\ExoEntity4\ItemsController::test

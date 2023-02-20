@@ -39,6 +39,61 @@ class ItemRepository extends ServiceEntityRepository
         }
     }
 
+    /*
+     * Exercice Entity 3 - Part 1
+     */
+
+    public function findByDocQueryLang($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT i.id, i.label
+                FROM App\Entity\Item i
+                WHERE i.id = :id'
+            )
+            ->setParameters(['id' => $id]);
+
+        return $query->getResult()[0] ?? null;
+    }
+
+    public function findByNative($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $query = $conn->prepare(
+            'SELECT i.id, i.label 
+            FROM item i
+            WHERE i.id = :id'
+        );
+
+        return $query
+            ->executeQuery(['id' => $id])
+            ->fetchAssociative() ?: null;
+    }
+
+    public function deleteByDocQueryLang($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('DELETE FROM App\Entity\Item i WHERE i.id = :id')
+            ->setParameters(['id' => $id]);
+
+        return $query->getResult();
+    }
+
+    public function deleteByNative($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        return $conn->executeStatement(
+            'DELETE FROM item WHERE id = :id',
+            ['id' => $id]
+        );
+    }
+
+    /*
+     * Doctrine Query Builder Examples
+     */
+
 //    /**
 //     * @return Item[] Returns an array of Item objects
 //     */
