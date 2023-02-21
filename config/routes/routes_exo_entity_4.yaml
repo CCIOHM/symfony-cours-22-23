@@ -1,5 +1,11 @@
 # Exercice - Entity 4 - Part 1
-entity_items_test:
+entity4_items_test:
   methods: GET
   path: /entity4/items/test
   controller: App\Controller\ExoEntity4\ItemsController::test
+
+# Exercice - Entity 4 - Part 2
+entity4_items_index:
+    methods: GET
+    path: /entity4/items/index
+    controller: App\Controller\ExoEntity4\ItemsController::index

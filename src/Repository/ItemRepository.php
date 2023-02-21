@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Item;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,7 +41,60 @@ class ItemRepository extends ServiceEntityRepository
     }
 
     /*
-     * Exercice Entity 3 - Part 1
+     * Exercice Entity 4 - Part 2
+     */
+
+    public function findByLabelAndMinimalQty(string $search = '', int $minQuantity = 0, bool $orderByAsc = true)
+    {
+        return $this
+            ->getQueryFindByLabelAndMinimalQty($search, $minQuantity, $orderByAsc)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getQueryFindByLabelAndMinimalQty(string $search = '', int $minQuantity = 0, bool $orderByAsc = true): QueryBuilder
+    {
+        $query = $this->createQueryBuilder('i');
+
+        $this->addSearchToQuery($query, $search)
+            ->addMinimalQtyToQuery($query, $minQuantity)
+            ->addOrderByPriceToQuery($query, $orderByAsc);
+
+        return $query;
+    }
+
+    public function addSearchToQuery(QueryBuilder $query, ?string $search): self
+    {
+        $search = trim($search);
+        if ($search) {
+            $query->andWhere('i.label LIKE :search')
+                ->setParameter('search', '%'.$search.'%')
+                ->orWhere('i.location LIKE :search')
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        return $this;
+    }
+
+    public function addMinimalQtyToQuery(QueryBuilder $query, ?int $minQuantity): self
+    {
+        if ($minQuantity > 0) {
+            $query->andWhere('i.quantity > :quantity')
+                ->setParameter('quantity', $minQuantity);
+        }
+
+        return $this;
+    }
+
+    public function addOrderByPriceToQuery(QueryBuilder $query, bool $asc = true): self
+    {
+        $query->orderBy('i.price', $asc ? 'ASC' : 'DESC');
+
+        return $this;
+    }
+
+    /*
+     * Exercice Entity 4 - Part 1
      */
 
     public function findByDocQueryLang($id)
