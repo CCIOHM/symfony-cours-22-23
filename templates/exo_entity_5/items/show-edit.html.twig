@@ -1,0 +1,53 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}Items {{ edit ? 'Edit' : 'Show' }}{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{{ edit ? path('entity_items_update', {id: item.id}) : '' }}">
+        <label for="label">Label</label><br>
+        <input type="text" name="label" id="label" 
+            value="{{ item.label }}" 
+            {{ edit ? '' : 'disabled' }}
+            class="input-label {{ edit ? 'input-edit' : 'input-show' }}"
+        >
+
+        <br>
+        <label for="price">Price</label><br>
+        <input type="number" name="price" id="price" 
+            value="{{ item.price }}"
+            {{ edit ? '' : 'disabled' }}
+            class="input-label {{ edit ? 'input-edit' : 'input-show' }}"
+        >
+
+        <br>
+        <label for="quantity">Quantity</label><br>
+        <input type="number" name="quantity" id="quantity" 
+            value="{{ item.quantity }}"
+            {{ edit ? '' : 'disabled' }}
+            class="input-label {{ edit ? 'input-edit' : 'input-show' }}"
+        >
+
+        <br>
+        <label for="location">Location</label><br>
+        <input type="text" name="location" id="location" 
+            value="{{ item.location }}"{{ edit ? '' : 'disabled' }}
+            class="input-label {{ edit ? 'input-edit' : 'input-show' }}"
+        >
+        
+        {% if edit %}
+            <br><br>
+            <input type="submit" value="Update the Item">
+
+            <p>
+                <a href="{{ path('entity_items_show', {id: item.id}) }}">Return to Show</a>
+            </p>
+        {% else %}
+            <p>
+                <a href="{{ path('entity_items_edit', {id: item.id}) }}">Go to Edit</a>
+            </p>
+            <p>
+                <a href="{{ path('entity_items_delete', {id: item.id}) }}">Direct delete</a>
+            </p>
+        {% endif %}
+    </form>
+{% endblock %}

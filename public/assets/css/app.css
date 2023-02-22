@@ -40,7 +40,51 @@ nav ul li a, footer ul li a {
     color: whitesmoke;
 }
 
+section {
+    margin: 1rem 0;
+}
+
 a, a:focus, a:active {
     font-weight: bold;
     color: black;
+}
+
+.pretty-table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.pretty-table th {
+    border: 2px solid #3f3e3e;
+}
+
+.pretty-table td {
+    border: 1px solid #767676;
+}
+
+/*
+ * Helpers
+ */
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: .6rem .8rem;
+    margin: .1rem;
+    border-radius: 5%;
+    background-color: rgb(95, 95, 194);
+    color: whitesmoke;
+}
+.btn-flat {
+    padding: .2rem .3rem;
+}
+.btn-very-flat {
+    padding: .1rem .2rem;
+}
+.bg-red {
+    background-color: #cb5e5b !important;
+}
+.bg-orange {
+    background-color: #f0bd2f !important;
 }

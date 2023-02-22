@@ -1,0 +1,76 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block title %}Items List{% endblock %}
+
+{% block content %}
+    <section>
+        <form action="{{ path('entity5_items_index') }}">
+            <label for="search-list">Search:</label><br>
+            <input type="search" name="search_list" id="search-list" value="{{ app.request.get('search_list') }}">
+
+            <br>
+            <label for="qty-minimal">Minimal quantity:</label><br>
+            <input type="number" name="qty_minimal" id="qty-minimal" placeholder="0" value="{{ app.request.get('qty_minimal') }}">
+
+            <br>
+            <input type="submit" value="Search">
+            <br><br>
+        </form>
+    </section>
+
+    <section>
+        <a class="btn" href="{{ path('entity5_items_create') }}">Create a new Item</a>
+    </section>
+
+    <section>
+        <table class="pretty-table">
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Location</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.label}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.location}}</td>
+                    <td class="inner-date" data-value="{{ item.createdAt|date('U') }}"></td>
+                    <td>
+                        <a class="btn btn-very-flat" href="{{ path('entity_items_show', {id: item.id}) }}">Show</a>
+                        <br>
+                        <a class="btn btn-very-flat bg-orange" href="{{ path('entity_items_edit', {id: item.id}) }}">Edit</a>
+                        <br>
+                        <a class="btn btn-very-flat bg-red" href="{{ path('entity_items_delete', {id: item.id}) }}">Direct delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
+
+{% block script_body %}
+    <script>
+
+        function translateDate(selector) {
+            const inputDate = document
+                .querySelectorAll(selector)
+                .forEach(el => {
+                    el.innerHTML = '';
+
+                    const unixTimestramps = parseInt(el.getAttribute('data-value')) * 1000;
+                    if (unixTimestramps) {
+                        const date = new Date(unixTimestramps);
+                        el.innerHTML = date.toLocaleDateString();
+                    }
+                });
+        }
+
+        translateDate('.inner-date');
+    </script>
+{% endblock %}

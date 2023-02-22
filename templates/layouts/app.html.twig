@@ -17,13 +17,16 @@
     <nav>
         <ul>
             <li><a href="{{ path('twig_welcome_index') }}">Welcome</a></li>
+            <li><a href="{{ path('entity_items_index') }}">Items (Exo 3)</a></li>
+            <li><a href="{{ path('entity4_items_index') }}">Items (Exo 4)</a></li>
+            <li><a href="{{ path('entity5_items_index') }}">Items (Exo 5)</a></li>
             <li><a href="{{ path('twig_pictures_index') }}">Pictures</a></li>
             <li><a href="{{ path('twig_contact_index') }}">Contact</a></li>
         </ul>
     </nav>
 
     <main>
-        <section>
+        <article>
             {% set errorFlashes = app.flashes('error') %}
             {% if errorFlashes %}
                 <ul class="errors">
@@ -41,9 +44,8 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-        </section>
+        </article>
 
-        <br>
         {% block content %}{% endblock %}
     </main>
 

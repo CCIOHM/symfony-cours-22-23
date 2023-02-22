@@ -1,0 +1,35 @@
+# Exercice - Entity 5
+entity5_items_index:
+    methods: GET
+    path: /entity5/items/index
+    controller: App\Controller\ExoEntity5\ItemsController::index
+
+entity5_items_create:
+    methods: GET
+    path: /entity5/items/create
+    controller: App\Controller\ExoEntity5\ItemsController::create
+
+entity5_items_store:
+    methods: POST
+    path: /entity5/items/store
+    controller: App\Controller\ExoEntity5\ItemsController::store
+
+entity5_items_attach_category:
+    methods: POST
+    path: /entity5/items/{id}/attach/category/{category_id}
+    controller: App\Controller\ExoEntity5\ItemsController::attachCategory
+
+entity5_items_detach_category:
+    methods: POST
+    path: /entity5/items/{id}/detach/category/{category_id}
+    controller: App\Controller\ExoEntity5\ItemsController::detachCategory
+
+entity5_categories_attach_item:
+    methods: POST
+    path: /entity5/categories/{id}/attach/item/{item_id}
+    controller: App\Controller\ExoEntity5\CategoriesController::attachItem
+
+entity5_categories_detach_item:
+    methods: POST
+    path: /entity5/categories/{id}/detach/item/{item_id}
+    controller: App\Controller\ExoEntity5\CategoriesController::detachItem
