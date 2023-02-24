@@ -1,0 +1,36 @@
+# Exercice - Auth
+user_login:
+    methods: GET
+    path: /login
+    controller: App\Controller\ExoAuth\LoginController::login
+
+user_login_store:
+    methods: POST
+    path: /login
+    controller: App\Controller\ExoAuth\LoginController::login
+
+user_register:
+    methods: GET
+    path: /register
+    controller: App\Controller\ExoAuth\RegistrationController::create
+
+user_register_store:
+    methods: POST
+    path: /register
+    controller: App\Controller\ExoAuth\RegistrationController::store
+
+app_verify_email:
+    path: /verify/email
+    controller: App\Controller\ExoAuth\RegistrationController::verifyUserEmail
+
+user_home:
+    methods: GET
+    path: /home
+    controller: App\Controller\ExoAuth\HomeController::index
+
+# Special route used for fire the Symfony logout event
+# Defined in "firewalls.main.logout" for config/packages/security.yaml
+user_logout:
+    methods: POST
+    path: /user/logout
+

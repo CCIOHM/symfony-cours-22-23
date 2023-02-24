@@ -22,12 +22,34 @@
             <li><a href="{{ path('entity5_items_index') }}">Items (Exo 5)</a></li>
             <li><a href="{{ path('twig_pictures_index') }}">Pictures</a></li>
             <li><a href="{{ path('twig_contact_index') }}">Contact</a></li>
+
+            <li>||</li>
+            {% if app.user %}
+                <li>
+                    <form action="{{ path('user_logout') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token('user_logout') }}">
+                        <input type="submit" value="Logout" class="btn">
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{{ path('user_login') }}">Login</a></li>
+                <li><a href="{{ path('user_register') }}">Register</a></li>
+            {% endif %}
         </ul>
     </nav>
 
     <main>
         <article>
             {% set errorFlashes = app.flashes('error') %}
+            {% if errorFlashes %}
+                <ul class="errors">
+                    {% for error in errorFlashes %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% set errorFlashes = app.flashes('errors') %}
             {% if errorFlashes %}
                 <ul class="errors">
                     {% for error in errorFlashes %}

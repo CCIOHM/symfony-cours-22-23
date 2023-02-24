@@ -1,0 +1,34 @@
+{% extends 'layouts/app.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    <form action="{{ url('user_register_store') }}" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token('registration_form') }}">
+
+        <br>
+        <label for="name">Your name:</label>
+        <input type="text" name="name" id="name">
+
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+
+        <br>
+        <input type="checkbox" name="legal_terms" id="legal_terms">
+        <label for="legal_terms">Checkbox required !</label>
+
+        <br>
+        <input type="submit" value="S'inscrire">
+    </form>
+{% endblock %}
